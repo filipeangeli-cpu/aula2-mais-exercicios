@@ -33,10 +33,10 @@ class Celular:
     def executar_app(self, app1, app2):
         if self.ligado == False:
             print("Não dá pra executar um app com o celular desligado.")
-        resposta = int(input("Qual app você deseja executar?\n1)Pou\n2)X\n"))
+        resposta = int(input("Qual app você deseja executar?\n1)Pou\n2)X\n"))  # Aqui deveria ser {app1.nome} no lugar de Pou, {app2.nome} no lugar de X
         match resposta:
             case 1:
-                print("Pou iniciado.")
+                print("Pou iniciado.")        # Aqui deveria ser {app1.nome} no lugar de Pou
                 while True:
                     if self.bateria > 0:
                         self.bateria -= app1.consumo_bateria
@@ -50,7 +50,7 @@ class Celular:
                         print("Bateria insuficiente para executar o aplicativo.")
                         break
             case 2: 
-                print("X iniciado.")
+                print("X iniciado.")    #  Aqui deveria ser {app2.nome} no lugar de X
                 while True:
                     if self.bateria > 0:
                         self.bateria -= app2.consumo_bateria
@@ -70,7 +70,7 @@ def main():
         resposta = input("Deseja ligar o celular?(sim/nao) \n").strip().lower()
         match resposta:
             case "sim":
-                if xiaomi.bateria > 0 and xiaomi.bateria <= 100:
+                if xiaomi.bateria > 0 and xiaomi.bateria <= 100:     # esta lógica deveria ser verificada no método executar_app do Celular
                     xiaomi.ligar()
                     
                 else:
