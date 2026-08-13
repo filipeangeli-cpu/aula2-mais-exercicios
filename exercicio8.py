@@ -23,3 +23,39 @@
 #    - Chame o método alimentar() 3 vezes.
 #    - Chame o método status() novamente para conferir o resultado final.
 # ==============================================================================
+
+class PetVirtual:
+    def __init__(self, nome):
+        self.nome = nome
+        self.fome = 5
+        self.felicidade = 5
+
+    def alimentar(self):
+        if self.fome > 0:
+            self.fome -= 2
+            if self.fome < 0:
+                self.fome = 0
+            print(f"{self.nome} foi alimentado! Fome atual: {self.fome}")
+        else:
+            print(f"{self.nome} já está de barriga cheia")
+
+    def brincar(self):
+        self.felicidade += 2
+        self.fome += 1
+        print(f"Você brincou com {self.nome}! Felicidade: {self.felicidade} | Fome: {self.fome}")
+
+    def status(self):
+        print(f"Status de {self.nome}: Fome: {self.fome} | Felicidade: {self.felicidade}")
+        if self.fome >= 8:
+            print(f"Atenção: {self.nome} precisa comer")
+            if self.felicidade < 3:
+                print(f"Atenção: {self.nome} está triste! Brinque com ele para aumentar a felicidade.")
+
+class TestePetVirtual:
+        meu_pet = PetVirtual("REX")
+        meu_pet.status()
+        meu_pet.brincar()
+        meu_pet.brincar()
+        meu_pet.alimentar()
+        meu_pet.alimentar()
+        meu_pet.alimentar()

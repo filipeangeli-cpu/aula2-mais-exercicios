@@ -12,7 +12,8 @@
 
 class Aplicativo:
     def __init__(self, nome, consumo_bateria):
-        pass
+        self.nome = nome
+        self.consumo_bateria = consumo_bateria
 
 
 class Celular:
@@ -20,11 +21,40 @@ class Celular:
         self.marca = marca
         self.modelo = modelo
         self.bateria = bateria
-        self.ligado = False
+        self.ligado = True
 
     def ligar(self):
-        self.ligado = True
-        print(f"O {self.marca} {self.modelo} foi ligado.")
+        if not self.ligado:
+            self.ligado = True
+            print(f"O {self.marca} {self.modelo} foi ligado.")
+        
 
     def executar_app(self, app):
-        pass
+        if self.ligado and self.bateria >= app.consumo_bateria:
+            self.bateria -= app.consumo_bateria
+            print(f"Executando o aplicativo: {app.nome}.")
+            print(f"Bateria restante: {self.bateria}%.")
+
+        else:
+            if not self.ligado:
+                print("O celular está desligado. Não é possível executar os aplicativos.")
+            else:
+                print(f"Bateria insuficiente para executar o aplicativo: {app.nome}.")
+                print(f"Bateria atual: {self.bateria}%, consumo necessário: {app.consumo_bateria}%.")
+
+    app1 = Aplicativo("WhatsApp", 10)
+    app2 = Aplicativo("Instagram", 20)
+    app3 = Aplicativo("Facebook", 30)
+    app4 = Aplicativo("TikTok", 40)
+    app5 = Aplicativo("YouTube", 50)
+
+celular = Celular("Apple", "iPhone 14 Pro Max", 100)
+celular.ligar()
+celular.executar_app(celular.app1)
+celular.executar_app(celular.app2)
+celular.executar_app(celular.app3)
+celular.executar_app(celular.app4)
+celular.executar_app(celular.app5)
+
+    
+    
