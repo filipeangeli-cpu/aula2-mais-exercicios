@@ -3,8 +3,8 @@ class CofreDigital:
         if not isinstance(senha, str) or len(senha) != 4 or not senha.isdigit():
             raise ValueError("Senha deve ser uma string de 4 dígitos.")
         self.titular = titular
-        self.__senha = senha       # atributo privado (name mangling)
-        self.__saldo = 0.0        # atributo privado (name mangling)
+        self.__senha = senha       
+        self.__saldo = 0.0       
 
     def depositar(self, valor: float):
         if valor <= 0:
@@ -27,7 +27,7 @@ class CofreDigital:
             print("Saldo insuficiente.")
             return False
 
-    # método auxiliar (opcional) para demonstrar leitura protegida do saldo
+    
     def obter_saldo(self, senha_informada: str):
         if senha_informada != self.__senha:
             print("Senha incorreta! Acesso negado.")
@@ -36,16 +36,16 @@ class CofreDigital:
 
 
 if __name__ == "__main__":
-    # Cria um cofre com titular e senha "1234"
+    
     cofre = CofreDigital("Filipe", "1307")
 
     # Deposita e tenta sacar
-    cofre.depositar(100.0)                       # deve aumentar saldo para 100.0
-    cofre.sacar(30.0, "0000")                    # senha incorreta -> "Senha incorreta! Acesso negado."
-    cofre.sacar(30.0, "1234")                    # senha correta -> saque permitido
+    cofre.depositar(100.0)                       
+    cofre.sacar(30.0, "0000")                  
+    cofre.sacar(30.0, "1234")                    
 
-    # Tentar alterar atributos diretamente (fora da classe)
-    # Isso NÃO altera os atributos privados reais (que foram name-mangled para _CofreDigital__senha e _CofreDigital__saldo)
+    
+   
     cofre.__saldo = 1_000_000.0
     cofre.__senha = "0000"
 
@@ -54,12 +54,9 @@ if __name__ == "__main__":
     for k, v in cofre.__dict__.items():
         print(f"  {k!r}: {v!r}")
 
-    # Tentativa de saque usando a senha original: deve continuar funcionando,
-    # porque o atributo privado interno não foi alterado por cofre.__senha
+   
+    
     print("\nTentando sacar R$10,00 com a senha original '1234' após a tentativa de alteração direta:")
-    cofre.sacar(10.0, "1234")   # se encapsulamento funcionou, saque será autorizado
-
-    # Nota: é possível acessar/alterar o "privado" por name mangling (não recomendado):
-    # cofre._CofreDigital__saldo = 9999.0
-    # cofre._CofreDigital__senha = "0000"
-    # Isso força a alteração dos atributos privados, mas quebra o encapsulamento.
+    cofre.sacar(10.0, "1234")  
+  
+   
