@@ -32,7 +32,7 @@ class Gerente(Funcionario):
         print("Parabéns! Você recebeu uma bonificação de 10%!")
 
 
-# Testando o código
+
 func = Funcionario("João", "123.456.789-00", 3000)
 func.exibir_dados()
 func.aumentar_salario(10)
