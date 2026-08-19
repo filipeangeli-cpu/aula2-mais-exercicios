@@ -40,7 +40,7 @@ carro1 = Carro("Chevrolet", "Opala")
 carro1.painel()
 carro1.acelerar()
 
-print("-----")
+print("-----X-----X-----X-----X-----X-----X-----X-----X-----X-----X----")
 
 carro2 = CarroEletrico("Tesla", "Model 3")
 carro2.painel()
