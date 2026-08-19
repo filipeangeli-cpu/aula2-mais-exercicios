@@ -73,12 +73,7 @@ usuario1 = Usuario("Filipe")
 
 usuario1.pegar_item(livro1)
 usuario1.pegar_item(livro2)
-
-
 usuario1.ver_historico()
-
 usuario1.pegar_item(livro1)
-
 usuario1.devolver_item(livro1)
-
 usuario1.ver_historico()
